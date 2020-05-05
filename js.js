@@ -1,11 +1,11 @@
-const boardTitle = document.querySelector('#board-name').textContent.trim();
+let boardTitle = document.querySelector('#board-name').textContent.trim();
 if (!boardTitle) {
     throw 'Board title does not exist. Please check if provided URL is correct.'
 }
 let parsedText = boardTitle + '\n\n';
-const columns = document.querySelectorAll('.message-list');
+let columns = document.querySelectorAll('.message-list');
 columns.forEach((column) => {
-    const columnTitle = column.querySelector('.column-header h2 span[role="button"]').textContent.trim();
+    const columnTitle = column.querySelector('.column-header h2').textContent.trim();
     const messages = [...column.querySelectorAll('.message-main')].map(messageBody => {
         const messageText = messageBody.querySelector('.message-body .text').textContent.trim();
         const votes = messageBody.querySelector('.votes .vote-area span.show-vote-count').textContent.trim();
