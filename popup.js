@@ -8,9 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
             var getBoardInfoQuery = "(function () { \
                 const boardTitle = document.querySelector('.board-name')?.textContent?.trim();\
                 if (!boardTitle) { \
-                    const error = 'Board title does not exist. Please check if provided URL is correct.';\
-                    console.log(error);\
-                    throw error;\
+                    throw 'Board title does not exist. Please check if provided URL is correct.';\
                 }\
                 let parsedText = `${boardTitle}\\n\\n`;\
                 const columns = document.querySelectorAll('.message-list'); \
@@ -30,17 +28,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
             resizeWindow();
 
-            exportBoardButton.textContent = 'Retry';
-            showPopupText();
         });
     }, false);
+
 }, false);
 
 function displayExportedText(results) {
-    results;
-    copyToClipboard(results);
-    document.execCommand("copy");
-    document.querySelector("#exportedText").innerHTML = results;
+    if (results[0]) {
+        copyToClipboard(results);
+        document.querySelector("#exportedText").innerHTML = results;
+        document.getElementById('exportBoard').textContent = 'Retry';
+        showPopupText();
+    } else {
+        let alert = document.getElementById('errorAlert');
+        var closeAlert = alert.firstElementChild;
+        closeAlert.addEventListener('click', function () {
+            alert.classList.remove('show');
+        });
+        alert.classList.add('show');
+    }
 }
 
 function resizeWindow() {
@@ -54,14 +60,13 @@ function copyToClipboard(text) {
     el.value = text;
     document.body.appendChild(el);
     el.select();
-    console.log(el);
     document.execCommand('copy');
     document.body.removeChild(el);
 }
 
 function showPopupText() {
     var popup = document.getElementById("copiedPopup");
-    popup.classList.toggle("show");
+    popup.classList.add("show");
     setTimeout(function () {
         popup.classList.remove('show');
     }, 5000);

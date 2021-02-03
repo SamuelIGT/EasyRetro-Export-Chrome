@@ -1,7 +1,5 @@
 <!doctype html>
 <html>
-<link rel="stylesheet" href="/html/styles.css">
-
 <head>
     <title>EasyRetro Export</title>
     <img src="images/banner.png" alt="EasyRetro Export">
@@ -18,6 +16,10 @@
             <span class="popuptext" id="copiedPopup">Copied to clipboard!</span>
         </div>
         <pre id="exportedText"></pre>
+        <div class="alert" id="errorAlert">
+            <span class="closebtn" id="clsAlert" onclick="hideAlert()">&times;</span>
+            Could not find the EasyRetro board. Please, make sure your board on EasyRetro is open and its tab is active.
+        </div>
     </div>
 </body>
 
