@@ -1,0 +1,24 @@
+{
+  "name": "EasyRetro Export",
+  "version": "1.0",
+  "description": "This extension easily exports your EasyRetro board to a text format.",
+  "permissions": [
+    "activeTab"
+  ],
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/logo_x16.png",
+      "32": "images/logo_x32.png",
+      "48": "images/logo_x48.png",
+      "128": "images/logo_x128.png"
+    }
+  },
+  "icons": {
+    "16": "images/logo_x16.png",
+    "32": "images/logo_x32.png",
+    "48": "images/logo_x48.png",
+    "128": "images/logo_x128.png"
+  },
+  "manifest_version": 2
+}
